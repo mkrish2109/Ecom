@@ -1,14 +1,18 @@
 import React from "react";
 import NavUser from "./NavUser";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import UserFooter from "./UserFooter";
 
 function UserLayout() {
+  const { pathname } = useLocation();
+
+  const isLoginRegister = pathname === "/login" || pathname === "/register";
+
   return (
     <>
       <NavUser />
       <Outlet />
-      <UserFooter />
+      {!isLoginRegister && <UserFooter />}
     </>
   );
 }

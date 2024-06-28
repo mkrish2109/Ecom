@@ -7,6 +7,7 @@ import {
   BsInstagram,
   BsTwitter,
 } from "react-icons/bs";
+import { COMPANY_NAME } from "../../data/consts";
 
 function UserFooter() {
   return (
@@ -21,7 +22,9 @@ function UserFooter() {
                 name="Flowbite"
                 className="w-[50px] h-[50px] "
               />
-              <h2 className="font-bold text-[#2098e3] text-xl">Ecom Express</h2>
+              <h2 className="font-bold text-[#2098e3] text-xl">
+                {COMPANY_NAME}
+              </h2>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <div>

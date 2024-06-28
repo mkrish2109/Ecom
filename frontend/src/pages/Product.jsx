@@ -10,12 +10,16 @@ function Product() {
     <div>
       <div className="p-8">
         <FlowBreadCrumb />
-        <h3 className="pt-3  font-bold tracking-wider text-lg	">Mens T-Shirts</h3>
+        <h3 className="pt-3  font-bold tracking-wider text-lg	">
+          Mens T-Shirts
+        </h3>
       </div>
 
       <div className="grid grid-cols-[294px_minmax(294px,_1fr)] ">
         <div>
-          <h2 className="px-8 uppercase font-[700] tracking-wider text-base">Filter </h2>
+          <h2 className="px-8 uppercase font-[700] tracking-wider text-base">
+            Filter
+          </h2>
         </div>
         <div className="flex justify-between items-center  px-2 pb-4">
           <div className="flex gap-4">

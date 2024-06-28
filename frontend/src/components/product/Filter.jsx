@@ -1,6 +1,7 @@
 import React from "react";
 import ProductFilter from "./filter/ProductFilter";
 import ColorFilter from "./filter/ColorFilter";
+import { clothesColors } from "../../data/productList";
 
 function Filter() {
   return (
@@ -37,9 +38,13 @@ function Filter() {
       />
 
       {/* Color */}
-      <ColorFilter
+      <ProductFilter
         title="Color"
-        colorName={[" blue", " green", " gray", " red"]}
+        categories={clothesColors.map((color) => {
+          return (
+            <ColorFilter color={color.color} colorName={color.colorName} />
+          );
+        })}
       />
     </>
   );
