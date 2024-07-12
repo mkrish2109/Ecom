@@ -1,9 +1,17 @@
 import { Button, Select } from "flowbite-react";
 import React from "react";
 import { HiStar } from "react-icons/hi";
+import { addToCart } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
-function DetailsPage() {
+function DetailsPage({ product }) {
+  const dispatch = useDispatch();
+  function handleAddToCart(e) {
+    e.stopPropagation();
+    dispatch(addToCart({ ...product, qty: 1 }));
+  }
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
@@ -45,7 +53,9 @@ function DetailsPage() {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button pill>Add to Cart</Button>
+        <Button pill onClick={handleAddToCart}>
+          Add to Cart
+        </Button>
         <Button pill>Wish List</Button>
       </div>
     </div>

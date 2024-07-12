@@ -4,6 +4,7 @@ import ProductCard from "../components/product/ProductCard";
 import ProductFilter from "../components/product/filter/ProductFilter";
 import Filter from "../components/product/Filter";
 import { Select } from "flowbite-react";
+import { products } from "../data/productList";
 
 function Product() {
   return (
@@ -54,8 +55,8 @@ function Product() {
         </div>
 
         <div className="grid grid-cols-4 gap-3 md:grid-cols-4 sm:grid-cols-2  px-2 ">
-          {[...Array(10)].map((value, i) => {
-            return <ProductCard key={i} />;
+          {products.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
           })}
         </div>
       </div>

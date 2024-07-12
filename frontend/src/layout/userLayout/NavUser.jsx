@@ -1,5 +1,5 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { BiCart } from "react-icons/bi";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { HiChartBar, HiHeart, HiUser } from "react-icons/hi";
@@ -7,11 +7,33 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { SlHandbag } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import { COMPANY_NAME } from "../../data/consts";
+import CartDrawer from "../../components/cart/CartDrawer";
+import { logout } from "../../services/apiServices";
+import { toast } from "react-toastify";
+import cartSliceReducer from "../../redux/slices/cartSlice";
+import { useSelector } from "react-redux";
+import { dropdownLinks } from "../../data/layout";
 
 function NavUser() {
+  const [isOpen, setIsOpen] = useState();
+  const user = useSelector((store) => {
+    return store.user;
+  });
+  function handleToggle() {
+    setIsOpen(!isOpen);
+  }
+
+  async function handleLogOut() {
+    const response = await logout();
+    if (response.status === 200) {
+      toast.warning("Logouy Successfully");
+    } else {
+      toast.error(response.msg);
+    }
+  }
   return (
     <>
-      <Navbar className="p-5" fluid>
+      <Navbar className="py-4 sm:px-8" fluid>
         <Navbar.Brand className="items-center justify-center">
           <Link to="/" className="flex items-center">
             <img
@@ -29,30 +51,40 @@ function NavUser() {
             label={
               <div className="flex flex-col justify-center items-center ">
                 <FaRegUser className="text-xl text-gray-600" />
-                <span className="text-sm text-gray-700">User</span>
+                <span className="text-sm font-bold text-gray-700">Profile</span>
               </div>
             }>
             <Dropdown.Header>
               <span className="block text-sm">Bonnie Green</span>
               <span className="block truncate text-sm font-medium">
-                name@flowbite.com
+                {console.log("user", user)}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item>
+            {dropdownLinks.map((link) => {
+              return (
+                <Dropdown.Item key={link.id}>
+                  <Link to={link.url}>{link.name}</Link>
+                </Dropdown.Item>
+              );
+            })}
             <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
+            <Link to="/login">
+              <Dropdown.Item>Sign In</Dropdown.Item>
+            </Link>
           </Dropdown>
 
-          <Link  className="flex flex-col justify-center items-center ">
+          <Link
+            className="flex flex-col justify-center items-center "
+            to="/wishlist">
             <FaRegHeart className="text-xl text-gray-600" />
-            <span className="text-sm text-gray-700">Wishlist
-            </span>
+            <span className="text-sm font-bold text-gray-700">Wishlist</span>
           </Link>
-          <Link  className="flex flex-col justify-center items-center ">
+          <Link
+            className="flex flex-col justify-center items-center "
+            onClick={handleToggle}>
             <SlHandbag className="text-xl text-gray-600" />
-            <span className="text-sm text-gray-700">Bag</span>
+            <span className="text-sm font-bold text-gray-700">Bag</span>
           </Link>
 
           <Navbar.Toggle />
@@ -68,6 +100,7 @@ function NavUser() {
             <Navbar.Link href="#">Kid</Navbar.Link>
           </Link>
         </Navbar.Collapse>
+        <CartDrawer isOpen={isOpen} handleToggle={handleToggle} />
       </Navbar>
     </>
   );

@@ -7,6 +7,7 @@ import {
   getCategories,
   getTrendingProducts,
 } from "../helpers/homeHelpers";
+import CategoriesRow from "../components/home/categorieRow/CategoriesRow";
 
 function Home() {
   const params = useParams();
@@ -16,9 +17,9 @@ function Home() {
   const categories = getCategories(params.gender);
   return (
     <>
-      <OfferCarousel />
+      <OfferCarousel images={carouselImages} />
       <TrendingRow products={trendingProducts} />
-      {/* <CategoriesRow categories={categories} /> */}
+      <CategoriesRow categories={categories} />
     </>
   );
 }

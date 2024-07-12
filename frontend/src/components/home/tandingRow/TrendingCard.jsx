@@ -5,7 +5,7 @@ function TrendingCard({ product }) {
     <div className="h-[300px] overflow-hidden">
       <img
         src={product.url}
-        alt="..."
+        alt={product.name}
         className="w-full h-full object-cover"
       />
     </div>
