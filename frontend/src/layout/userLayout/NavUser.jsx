@@ -2,8 +2,6 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React, { useState } from "react";
 import { BiCart } from "react-icons/bi";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
-import { HiChartBar, HiHeart, HiUser } from "react-icons/hi";
-import { MdOutlineShoppingBag } from "react-icons/md";
 import { SlHandbag } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import { COMPANY_NAME } from "../../data/consts";
@@ -17,7 +15,7 @@ import { dropdownLinks } from "../../data/layout";
 function NavUser() {
   const [isOpen, setIsOpen] = useState();
   const user = useSelector((store) => {
-    return store.user;
+    console.log("user", store.user.user);
   });
   function handleToggle() {
     setIsOpen(!isOpen);
@@ -57,7 +55,7 @@ function NavUser() {
             <Dropdown.Header>
               <span className="block text-sm">Bonnie Green</span>
               <span className="block truncate text-sm font-medium">
-                {console.log("user", user)}
+                @gmail.com
               </span>
             </Dropdown.Header>
             {dropdownLinks.map((link) => {
@@ -66,7 +64,10 @@ function NavUser() {
                   <Link to={link.url}>{link.name}</Link>
                 </Dropdown.Item>
               );
-            })}
+            })}{" "}
+            <Link to="/admin">
+              <Dropdown.Item>Admin</Dropdown.Item>
+            </Link>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
             <Link to="/login">

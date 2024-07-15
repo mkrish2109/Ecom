@@ -17,6 +17,13 @@ import LayoutUser from "./layout/userLayout/LayoutUser";
 import Profile from "./pages/user/Profile";
 import Orders from "./pages/user/Orders";
 import Address from "./pages/user/Address";
+import LayoutAdmin from "./layout/adminLayout/LayoutAdmin";
+import ProductsListAdmin from "./components/admin/productsListAdmin/ProductsListAdmin";
+import AddUpdateProducts from "./components/admin/productsListAdmin/AddUpdateProducts";
+import OrdersListAdmin from "./components/admin/ordersListAdmin/OrdersListAdmin";
+import UsersListAdmin from "./components/admin/usersListAdmin/UsersListAdmin";
+import AccountAdmin from "./components/admin/accountAdmin/AccountAdmin";
+import DashboardAdmin from "./components/admin/dashboardAdmin/DashboardAdmin";
 
 function App() {
   return (
@@ -49,6 +56,14 @@ function App() {
                 <Route path="orders" element={<Orders />} />
                 <Route path="address" element={<Address />} />
               </Route>
+            </Route>
+            <Route path="/admin" element={<LayoutAdmin />}>
+              <Route path="dashboard" element={<DashboardAdmin />} />
+              <Route path="products" element={<ProductsListAdmin />} />
+              <Route path="products/:id" element={<AddUpdateProducts />} />
+              <Route path="orders" element={<OrdersListAdmin />} />
+              <Route path="users" element={<UsersListAdmin />} />
+              <Route path="account" element={<AccountAdmin />} />
             </Route>
           </Routes>
         </BrowserRouter>

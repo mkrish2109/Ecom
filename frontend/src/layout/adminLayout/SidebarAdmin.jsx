@@ -1,18 +1,17 @@
 import { Sidebar } from "flowbite-react";
 import React from "react";
-import { FaRegUser } from "react-icons/fa";
-import { FaLocationPin } from "react-icons/fa6";
-import { HiLocationMarker, HiShoppingBag, HiUser } from "react-icons/hi";
-import { SlHandbag } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
 const links = [
-  { icon: <HiUser />, url: "/user/profile", name: "Profile" },
-  { icon: <HiLocationMarker />, url: "/user/address", name: "Address" },
-  { icon: <HiShoppingBag />, url: "/user/orders", name: "Orders" },
+  { id: 1, name: "Dashboard", link: "/admin/dashboard" },
+  { id: 2, name: "Products", link: "/admin/products" },
+  { id: 3, name: "Orders", link: "/admin/orders" },
+  { id: 4, name: "Users", link: "/admin/users" },
+  { id: 5, name: "Account", link: "/admin/account" },
+  { id: 6, name: "Log Out" },
 ];
 
-function SildeBarUser() {
+function SidebarAdmin() {
   return (
     <Sidebar
       aria-label="Sidebar with multi-level dropdown example"
@@ -22,7 +21,7 @@ function SildeBarUser() {
           {links.map((value, index) => {
             return (
               <div className="flex flex-col ">
-                <Link to={value.url}>
+                <Link to={value.link}>
                   <Sidebar.Item>
                     <div className="flex items-center gap-2">
                       <div className="[&>svg]:text-xl [&>svg]:text-gray-500">
@@ -41,4 +40,4 @@ function SildeBarUser() {
   );
 }
 
-export default SildeBarUser;
+export default SidebarAdmin;
