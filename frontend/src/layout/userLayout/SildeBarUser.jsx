@@ -1,9 +1,6 @@
 import { Sidebar } from "flowbite-react";
 import React from "react";
-import { FaRegUser } from "react-icons/fa";
-import { FaLocationPin } from "react-icons/fa6";
 import { HiLocationMarker, HiShoppingBag, HiUser } from "react-icons/hi";
-import { SlHandbag } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
 const links = [

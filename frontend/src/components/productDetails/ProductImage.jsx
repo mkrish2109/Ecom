@@ -1,20 +1,16 @@
 import React from "react";
 
-function ProductImage() {
+function ProductImage({ images }) {
+  console.log("images", images);
   return (
-    <div className="grid grid-cols-2 gap-4 p-8">
-      <img
-        src="https://flowbite-react.com/images/products/apple-watch.png"
-        alt=""
-      />
-      <img
-        src="https://flowbite-react.com/images/products/apple-watch.png"
-        alt=""
-      />
-      <img
-        src="https://flowbite-react.com/images/products/apple-watch.png"
-        alt=""
-      />
+    <div className="grid grid-cols-2 gap-4 ">
+      {images.map((image, index) => {
+        return (
+          <div key={index} className=" overflow-hidden border">
+            <img src={image} alt="" className="h-full w-full object-cover" />;
+          </div>
+        );
+      })}
     </div>
   );
 }

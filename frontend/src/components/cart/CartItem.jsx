@@ -14,7 +14,11 @@ function CartItem({ cartItem }) {
   return (
     <div className="flex items-center gap-2 border-b border-cyan-200 pb-2">
       <div className="h-[48px] w-[48px] overflow-hidden rounded-sm">
-        <img src={cartItem.img} alt="" className="h-full w-full object-cover" />
+        <img
+          src={cartItem.images[0]}
+          alt=""
+          className="h-full w-full object-cover"
+        />
       </div>
       <div className="grow-[1]">
         <div className="flex items-center justify-between gap-2">

@@ -43,7 +43,7 @@ function Register() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="firstName" value="First Name" />
+              <Label htmlFor="fname" value="First Name" />
             </div>
             <TextInput
               id="fname"
@@ -56,7 +56,7 @@ function Register() {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="lastName" value="Last Name" />
+              <Label htmlFor="lname" value="Last Name" />
             </div>
             <TextInput
               id="lname"
@@ -95,10 +95,10 @@ function Register() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="Confirm password" value="Repeat password" />
+            <Label htmlFor="confirmPassword" value="Repeat password" />
           </div>
           <TextInput
-            id="repeat-password"
+            id="confirmPassword"
             type="password"
             name="confirmPassword"
             required

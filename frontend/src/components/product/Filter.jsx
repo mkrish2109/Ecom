@@ -40,9 +40,13 @@ function Filter() {
       {/* Color */}
       <ProductFilter
         title="Color"
-        categories={clothesColors.map((color) => {
+        categories={clothesColors.map((color, i) => {
           return (
-            <ColorFilter color={color.color} colorName={color.colorName} />
+            <ColorFilter
+              key={i}
+              color={color.color}
+              colorName={color.colorName}
+            />
           );
         })}
       />

@@ -12,8 +12,8 @@ function CartDrawer({ isOpen, handleToggle }) {
     <Drawer open={isOpen} onClose={handleToggle} position="right">
       <Drawer.Header titleIcon={HiShoppingCart} title="Cart" />
       <Drawer.Items>
-        {cart.map((cartItem) => {
-          return <CartItem cartItem={cartItem} />;
+        {cart.map((cartItem, i) => {
+          return <CartItem key={i} cartItem={cartItem} />;
         })}
       </Drawer.Items>
     </Drawer>

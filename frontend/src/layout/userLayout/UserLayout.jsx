@@ -13,7 +13,7 @@ function UserLayout() {
   return (
     <>
       <NavUser />
-      <ToastContainer />
+      <ToastContainer closeOnClick />
       <Outlet />
       {!isLoginRegister && <UserFooter />}
     </>

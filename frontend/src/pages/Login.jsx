@@ -1,11 +1,28 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../services/apiServices";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../redux/slices/userSlice";
+import { HiEye, HiEyeOff } from "react-icons/hi";
 
 function Login() {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = useSelector((store) => {
+    return store.user.user;
+  });
+
+  useEffect(() => {
+    if (user) {
+      navigate("/user/profile");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
   async function handleSubmit(e) {
     try {
       e.preventDefault();
@@ -18,6 +35,7 @@ function Login() {
       const response = await login(data);
 
       if (response.success) {
+        dispatch(loginUser(data));
         return toast.success(response.msg), navigate("/");
       } else {
         toast.error(response.msg);
@@ -27,6 +45,10 @@ function Login() {
     }
   }
 
+  function toggleShow() {
+    setShowPassword(!showPassword);
+  }
+
   return (
     <div className="items-center flex justify-center h-[calc(100vh-88px-90px)]  ">
       <form
@@ -34,7 +56,7 @@ function Login() {
         onSubmit={handleSubmit}>
         <div className="">
           <div className="mb-2 block">
-            <Label htmlFor="email1" value="Your email" />
+            <Label htmlFor="email" value="Your email" />
           </div>
           <TextInput
             id="email1"
@@ -46,9 +68,26 @@ function Login() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="password1" value="Your password" />
+            <Label htmlFor="password" value="Your password" />
           </div>
-          <TextInput id="password" name="password" type="password" required />
+          <TextInput
+            id="password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            className="[&>div>input]:pr-[33px]"
+            required
+          />{" "}
+          {showPassword ? (
+            <HiEyeOff
+              onClick={toggleShow}
+              className="text-2xl cursor-pointer absolute top-[50%] translate-y-[-50%] right-[8px]"
+            />
+          ) : (
+            <HiEye
+              onClick={toggleShow}
+              className="text-2xl cursor-pointer absolute top-[50%] translate-y-[-50%] right-[8px]"
+            />
+          )}
         </div>
 
         <Link to="/forgot-password">Forgot password?</Link>

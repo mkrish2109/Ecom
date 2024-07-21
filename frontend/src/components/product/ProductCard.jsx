@@ -10,7 +10,7 @@ function ProductCard({ product }) {
   const dispatch = useDispatch();
 
   function goToDetails() {
-    navigate(`1`);
+    navigate(product._id);
   }
 
   function handleAddToCart(e) {
@@ -19,7 +19,7 @@ function ProductCard({ product }) {
   }
 
   return (
-    <>
+    <div>
       <Card
         className="max-w-sm cursor-pointer overflow-hidden"
         onClick={goToDetails}
@@ -28,7 +28,7 @@ function ProductCard({ product }) {
             <div className="h-[300px] overflow-hidden">
               <img
                 className="h-full w-full object-cover"
-                src={product.img}
+                src={product.images[0]}
                 alt={product.name}
               />
             </div>
@@ -86,7 +86,7 @@ function ProductCard({ product }) {
           </div>
         </div>
       </Card>
-    </>
+    </div>
   );
 }
 

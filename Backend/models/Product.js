@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ["t-shirt", "shirt", "jeans", "jackets", "shoes", "hoodies"],
+    enum: ["t-shirts", "shirts", "jeans", "jackets", "shoes", "hoodies"],
     required: true,
   },
   gender: { type: String, enum: ["men", "women", "kids"], required: true },
@@ -61,6 +61,7 @@ const productSchema = new mongoose.Schema({
           "turquoise",
           "lavender",
           "navy",
+          "black",
         ];
 
         for (const c of colors) {

@@ -7,9 +7,9 @@ function UserAuthGuard({ children }) {
     return store.user.user;
   });
 
-  // if (!user) {
-  //   // return <Navigate to="/login" />;
-  // }
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
   return <div>{children}</div>;
 }

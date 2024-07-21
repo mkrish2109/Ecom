@@ -1,34 +1,37 @@
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { Dropdown, Navbar } from "flowbite-react";
 import React, { useState } from "react";
-import { BiCart } from "react-icons/bi";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { SlHandbag } from "react-icons/sl";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { COMPANY_NAME } from "../../data/consts";
-import CartDrawer from "../../components/cart/CartDrawer";
-import { logout } from "../../services/apiServices";
 import { toast } from "react-toastify";
-import cartSliceReducer from "../../redux/slices/cartSlice";
-import { useSelector } from "react-redux";
+import CartDrawer from "../../components/cart/CartDrawer";
+import { COMPANY_NAME } from "../../data/consts";
 import { dropdownLinks } from "../../data/layout";
+import { logoutUser } from "../../redux/slices/userSlice";
+import { logout } from "../../services/apiServices";
 
 function NavUser() {
   const [isOpen, setIsOpen] = useState();
   const user = useSelector((store) => {
-    console.log("user", store.user.user);
+    return store.user.user;
   });
   function handleToggle() {
     setIsOpen(!isOpen);
   }
 
+  const dispatch = useDispatch();
+
   async function handleLogOut() {
     const response = await logout();
+    dispatch(logoutUser());
     if (response.status === 200) {
-      toast.warning("Logouy Successfully");
+      toast.warning("Logout Successfully");
     } else {
       toast.error(response.msg);
     }
   }
+
   return (
     <>
       <Navbar className="py-4 sm:px-8" fluid>
@@ -53,9 +56,11 @@ function NavUser() {
               </div>
             }>
             <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
+              <span className="block text-sm">
+                {user ? user.fname : "John"}
+              </span>
               <span className="block truncate text-sm font-medium">
-                @gmail.com
+                {user ? user.email : "johnduo123@gmail.com"}
               </span>
             </Dropdown.Header>
             {dropdownLinks.map((link) => {
@@ -64,7 +69,7 @@ function NavUser() {
                   <Link to={link.url}>{link.name}</Link>
                 </Dropdown.Item>
               );
-            })}{" "}
+            })}
             <Link to="/admin">
               <Dropdown.Item>Admin</Dropdown.Item>
             </Link>

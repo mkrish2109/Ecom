@@ -6,7 +6,7 @@ const start = async (app) => {
     await connect();
     console.log("Database connected successfully!");
     app.listen(PORT, () => {
-      console.log("Server is running on port 5000");
+      console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
     console.log("Failed to connect to the database. Error: ", error.message);

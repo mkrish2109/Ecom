@@ -11,6 +11,8 @@ const getTokenUser = (user) => {
     name: user.fname + " " + user.lname,
     email: user.email,
     role: user.role,
+    fname: user.fname,
+    lname: user.lname,
   };
 };
 

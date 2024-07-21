@@ -20,7 +20,7 @@ function SidebarAdmin() {
         <Sidebar.ItemGroup>
           {links.map((value, index) => {
             return (
-              <div className="flex flex-col ">
+              <div key={index} className="flex flex-col ">
                 <Link to={value.link}>
                   <Sidebar.Item>
                     <div className="flex items-center gap-2">

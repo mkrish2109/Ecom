@@ -7,22 +7,29 @@ import { COMPANY_NAME } from "../../data/consts";
 import { dropdownLinks, navLinks } from "../../data/layout";
 import { Link } from "react-router-dom";
 import CartDrawer from "../../components/cart/CartDrawer";
+import { toast } from "react-toastify";
+import { logout } from "../../services/apiServices";
 
 function NavbarAdmin() {
   const [isOpen, setIsOpen] = useState();
   const user = useSelector((store) => {
-    return store.user;
+    return store.user.user;
   });
-  const dispatch = useDispatch();
 
-  const isLoggedIn = user?.user;
+  const dispatch = useDispatch();
 
   function handleToggle() {
     setIsOpen(!isOpen);
   }
 
   async function handleLogout() {
+    const response = await logout();
     dispatch(logoutUser());
+    if (response.status === 200) {
+      toast.warning("Logout Successfully");
+    } else {
+      toast.error(response.msg);
+    }
   }
 
   return (
@@ -46,11 +53,14 @@ function NavbarAdmin() {
               </div>
             }>
             <Dropdown.Header>
-              <span className="block text-sm">{user?.user?.name}</span>
+              <span className="block text-sm">{user?.fname}</span>
               <span className="block truncate text-sm font-medium">
-                {user?.user?.email}
+                {user?.email}
               </span>
             </Dropdown.Header>
+            <Dropdown.Item>
+              <Link to="/">Home</Link>
+            </Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
           </Dropdown>
         </div>

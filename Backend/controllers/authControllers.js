@@ -100,7 +100,10 @@ const login = async (req, res) => {
 
     const tokenUser = getTokenUser(existingUser);
 
-    const accessToken = getJWT(tokenUser);
+    const accessToken = getJWT({
+      userId: tokenUser.userId,
+      role: tokenUser.role,
+    });
 
     const oneDay = 1000 * 60 * 60 * 24;
 
