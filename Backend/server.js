@@ -7,6 +7,7 @@ const authRouter = require("./routes/authRouter");
 const userRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
 const fileupload = require("express-fileupload");
+const pagesRouter = require("./routes/pagesRouter");
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use("/uploads", express.static("uploads"));
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
 app.use("/products", productsRouter);
+app.use("/pages", pagesRouter);
 
 start(app);

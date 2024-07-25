@@ -10,10 +10,11 @@ function MyImageUpload({
   onChange,
   remove,
   images,
+  containerClassName,
   ...others
 }) {
   const labelText = label || getLabelFromName(name);
-  const [urls, setUrls] = useState(images);
+  const [urls, setUrls] = useState(images || []);
 
   function handleUpload(e) {
     const temp = [];
@@ -34,7 +35,7 @@ function MyImageUpload({
   }
 
   return (
-    <div>
+    <div className={containerClassName}>
       <Label htmlFor={name}>{labelText}</Label>
       <MyImagesPreview
         images={urls}

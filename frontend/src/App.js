@@ -7,7 +7,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Wishlist from "./pages/Wishlist";
 import { Provider } from "react-redux";
-
 import store from "./redux/store";
 import VerifyEmail from "./pages/VerifyEmail";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -24,6 +23,8 @@ import OrdersListAdmin from "./components/admin/ordersListAdmin/OrdersListAdmin"
 import UsersListAdmin from "./components/admin/usersListAdmin/UsersListAdmin";
 import AccountAdmin from "./components/admin/accountAdmin/AccountAdmin";
 import DashboardAdmin from "./components/admin/dashboardAdmin/DashboardAdmin";
+import PagesListAdmin from "./components/admin/pagesListAdmin/PagesListAdmin";
+import AddUpdatePages from "./components/admin/pagesListAdmin/AddUpdatePages";
 
 function App() {
   return (
@@ -59,6 +60,8 @@ function App() {
             </Route>
             <Route path="/admin" element={<LayoutAdmin />}>
               <Route path="dashboard" element={<DashboardAdmin />} />
+              <Route path="pages" element={<PagesListAdmin />} />
+              <Route path="pages/:id" element={<AddUpdatePages />} />
               <Route path="products" element={<ProductsListAdmin />} />
               <Route path="products/:id" element={<AddUpdateProducts />} />
               <Route path="orders" element={<OrdersListAdmin />} />

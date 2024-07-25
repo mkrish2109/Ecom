@@ -8,11 +8,12 @@ function MyInput({
   type = "text",
   value = "",
   onChange,
+  containerClassName,
   ...others
 }) {
   const labelText = label || getLabelFromName(name);
   return (
-    <div>
+    <div className={containerClassName}>
       <Label htmlFor={name}>{labelText}</Label>
       <TextInput
         id={name}

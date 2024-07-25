@@ -7,6 +7,7 @@ const links = [
   { id: 2, name: "Products", link: "/admin/products" },
   { id: 3, name: "Orders", link: "/admin/orders" },
   { id: 4, name: "Users", link: "/admin/users" },
+  { id: 4, name: "Page", link: "/admin/pages" },
   { id: 5, name: "Account", link: "/admin/account" },
   { id: 6, name: "Log Out" },
 ];
