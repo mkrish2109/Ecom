@@ -15,6 +15,7 @@ function Login() {
   const user = useSelector((store) => {
     return store.user.user;
   });
+  console.log("user", user);
 
   useEffect(() => {
     if (user) {
@@ -34,9 +35,12 @@ function Login() {
 
       const response = await login(data);
 
-      if (response.success) {
+      if (response.success === true) {
         dispatch(loginUser(data));
-        return toast.success(response.msg), navigate("/");
+        return (
+          toast.success(response.msg),
+          user.role === "admin" ? navigate("/admin/dashboard") : navigate("/")
+        );
       } else {
         toast.error(response.msg);
       }

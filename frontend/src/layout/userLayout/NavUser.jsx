@@ -74,10 +74,14 @@ function NavUser() {
               <Dropdown.Item>Admin</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
-            <Link to="/login">
-              <Dropdown.Item>Sign In</Dropdown.Item>
-            </Link>
+            {user ? (
+              <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
+            ) : null}
+            {!user ? (
+              <Link to="/login">
+                <Dropdown.Item>Sign In</Dropdown.Item>
+              </Link>
+            ) : null}
           </Dropdown>
 
           <Link

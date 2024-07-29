@@ -58,7 +58,14 @@ function App() {
                 <Route path="address" element={<Address />} />
               </Route>
             </Route>
-            <Route path="/admin" element={<LayoutAdmin />}>
+
+            <Route
+              path="/admin"
+              element={
+                <UserAuthGuard>
+                  <LayoutAdmin />
+                </UserAuthGuard>
+              }>
               <Route path="dashboard" element={<DashboardAdmin />} />
               <Route path="pages" element={<PagesListAdmin />} />
               <Route path="pages/:id" element={<AddUpdatePages />} />

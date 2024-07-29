@@ -18,7 +18,7 @@ function SildeBarUser() {
         <Sidebar.ItemGroup>
           {links.map((value, index) => {
             return (
-              <div className="flex flex-col ">
+              <div className="flex flex-col " key={index}>
                 <Link to={value.url}>
                   <Sidebar.Item>
                     <div className="flex items-center gap-2">
