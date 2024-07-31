@@ -1,5 +1,5 @@
 import { Dropdown, Navbar } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { SlHandbag } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,18 +9,31 @@ import CartDrawer from "../../components/cart/CartDrawer";
 import { COMPANY_NAME } from "../../data/consts";
 import { dropdownLinks } from "../../data/layout";
 import { logoutUser } from "../../redux/slices/userSlice";
-import { logout } from "../../services/apiServices";
+import { getAllPages, logout } from "../../services/apiServices";
 
 function NavUser() {
-  const [isOpen, setIsOpen] = useState();
+  const [isCartOpen, setCartIsOpen] = useState();
+  const [pages, setPages] = useState([]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAllPages().then((data) => {
+      setPages(
+        data?.data?.map((v) => {
+          return { name: v.name, id: v._id, slug: v.slug };
+        })
+      );
+    });
+  }, []);
+
   const user = useSelector((store) => {
     return store.user.user;
   });
-  function handleToggle() {
-    setIsOpen(!isOpen);
-  }
 
-  const dispatch = useDispatch();
+  function handleCartToggle() {
+    setCartIsOpen(!isCartOpen);
+  }
 
   async function handleLogOut() {
     const response = await logout();
@@ -31,7 +44,7 @@ function NavUser() {
       toast.error(response.msg);
     }
   }
-
+  console.log("page", pages);
   return (
     <>
       <Navbar className="py-4 sm:px-8" fluid>
@@ -92,7 +105,7 @@ function NavUser() {
           </Link>
           <Link
             className="flex flex-col justify-center items-center "
-            onClick={handleToggle}>
+            onClick={handleCartToggle}>
             <SlHandbag className="text-xl text-gray-600" />
             <span className="text-sm font-bold text-gray-700">Bag</span>
           </Link>
@@ -100,17 +113,15 @@ function NavUser() {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Link to="/men">
-            <Navbar.Link href="#">Men</Navbar.Link>
-          </Link>
-          <Link to="/women">
-            <Navbar.Link href="#">Women</Navbar.Link>
-          </Link>
-          <Link to="/kid">
-            <Navbar.Link href="#">Kid</Navbar.Link>
-          </Link>
+          {pages.map((link, index) => {
+            return (
+              <Link className="text-base" key={link.id} to={link.slug}>
+                <Navbar.Link href="#">{link.name}</Navbar.Link>
+              </Link>
+            );
+          })}
         </Navbar.Collapse>
-        <CartDrawer isOpen={isOpen} handleToggle={handleToggle} />
+        <CartDrawer isOpen={isCartOpen} handleToggle={handleCartToggle} />
       </Navbar>
     </>
   );

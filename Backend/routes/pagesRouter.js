@@ -13,7 +13,7 @@ const {
 const pagesRouter = express.Router();
 
 pagesRouter.get("/", getAllPages);
-pagesRouter.get("/:id", getSinglePage);
+pagesRouter.get("/:slug", getSinglePage);
 pagesRouter.post("/", authMiddleware, isAdminMiddleware, addPage);
 pagesRouter.patch("/:id", authMiddleware, isAdminMiddleware, updatePage);
 pagesRouter.delete("/:id", authMiddleware, isAdminMiddleware, deletePage);

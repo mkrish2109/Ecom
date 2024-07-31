@@ -17,6 +17,7 @@ const categorySchema = new mongoose.Schema({
 
 const pageSchema = new mongoose.Schema({
   name: { type: String, require: true },
+  slug: { type: String, required: true },
   carouselImages: {
     type: [String],
     validate: {
@@ -41,6 +42,7 @@ const pageSchema = new mongoose.Schema({
       message: "At least one category is required!",
     },
   },
+  isTrending: { type: Boolean, default: false },
 });
 
 const Page = mongoose.model("Page", pageSchema);

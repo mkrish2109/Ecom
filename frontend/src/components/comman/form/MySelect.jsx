@@ -4,6 +4,8 @@ import { getLabelFromName } from "../../../helpers/productsFormHelper";
 
 function MySelect({ name, label, options, value = "", onChange }) {
   const labelText = label || getLabelFromName(name);
+
+  if (!options) return null;
   return (
     <div>
       <Label htmlFor={name}>{labelText}</Label>

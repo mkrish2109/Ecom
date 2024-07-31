@@ -6,7 +6,7 @@ function OfferCarousel({ images }) {
     <div className="h-[70vh]">
       <Carousel className="[&>div]:rounded-none" slideInterval={5000}>
         {images.map((img, index) => {
-          return <img key={index} src={img.url} alt={img.alt} />;
+          return <img key={index} src={img} alt={""} />;
         })}
       </Carousel>
     </div>

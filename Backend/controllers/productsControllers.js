@@ -23,15 +23,27 @@ const getAllProducts = async (req, res) => {
 
 const getSingleProduct = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log(id);
-    const product = await Product.findById(id);
+    const { slug } = req.params;
+    const page = await Page.findOne({ slug: slug });
 
     if (!product) {
       return sendErrorResponse(res, "No such product found.", 404);
     }
 
     res.status(200).json({ success: true, data: product });
+  } catch (error) {
+    sendErrorResponse(res, error.message);
+  }
+};
+
+const getTrendingProducts = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const products = await Product.find({
+      gender: slug,
+      isTrending: true,
+    }).limit(10);
+    res.status(200).send({ success: true, data: products });
   } catch (error) {
     sendErrorResponse(res, error.message);
   }
@@ -73,8 +85,6 @@ const updateProduct = async (req, res) => {
     const { id } = req.params;
     const body = req.body;
     const files = req.files?.images;
-
-    console.log("body", body);
 
     if (!body.images) {
       body.images = [];
@@ -147,7 +157,6 @@ const deleteProduct = async (req, res) => {
       return sendErrorResponse(res, "No such product found.", 404);
     }
 
-    console.log("imageFileNames", product);
     // Get array of file names form array of file paths.
     const imageFileNames = product.images.map((img) => {
       return path.basename(img);
@@ -179,6 +188,7 @@ const deleteProduct = async (req, res) => {
 
 module.exports = {
   getAllProducts,
+  getTrendingProducts,
   getSingleProduct,
   addProduct,
   updateProduct,

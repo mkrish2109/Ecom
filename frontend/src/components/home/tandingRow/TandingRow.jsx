@@ -1,10 +1,9 @@
 import React from "react";
-// import Slider from "react-slick";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import TrendingCard from "./TrendingCard";
-import Slider from "react-slick";
 import RowTitle from "../../comman/RowTitle";
+import TrendingCard from "./TrendingCard";
 
 const settings = {
   dots: true,
@@ -15,14 +14,18 @@ const settings = {
 };
 
 function TrendingRow({ products }) {
+  if (!products) return null;
+  console.log("products", products);
   return (
     <div className="w-full p-8">
       <RowTitle title="Trending" />
-      <Slider {...settings} className="">
+      {/* <Slider {...settings} className=""> */}
+      <div className="overflow-x-auto flex items-center gap-2">
         {products.map((product) => {
           return <TrendingCard key={product.id} product={product} />;
         })}
-      </Slider>
+      </div>
+      {/* </Slider> */}
     </div>
   );
 }

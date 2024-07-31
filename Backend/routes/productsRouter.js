@@ -7,16 +7,18 @@ const {
 
 const {
   getAllProducts,
+  getSingleProduct,
   addProduct,
   updateProduct,
   deleteProduct,
+  getTrendingProducts,
 } = require("../controllers/productsControllers");
-const { getSingleProduct } = require("../controllers/productsControllers");
 
 productsRouter.get("/", getAllProducts);
+productsRouter.get("/trending/:slug", getTrendingProducts);
 productsRouter.get("/:id", getSingleProduct);
 productsRouter.post("/", authMiddleware, isAdminMiddleware, addProduct);
-productsRouter.patch("/:id", authMiddleware, isAdminMiddleware, updateProduct);
+productsRouter.patch("/:id", updateProduct);
 productsRouter.delete("/:id", authMiddleware, isAdminMiddleware, deleteProduct);
 
 module.exports = productsRouter;
