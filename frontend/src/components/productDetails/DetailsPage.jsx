@@ -12,7 +12,7 @@ function DetailsPage({ product }) {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 ">
       <div className="flex flex-col gap-2">
         <h2 className="text-2xl font-bold">{product.name}</h2>
         <p className="text-xl text-slate-500">{product.desc}</p>
@@ -37,23 +37,24 @@ function DetailsPage({ product }) {
         <div>
           <p className="mb-2 font-bold uppercase">Select Size</p>
           <div className="flex gap-2">
-            {/* {product.sizes.map((value, index) => {
+            {product.sizes.map((value, index) => {
               return (
                 <Button
+                  color="primary"
                   key={index}
-                  className="w-8 h-8 rounded-full items-center ">
+                  className="w-10 h-8 rounded-full items-center uppercase px-6  ">
                   {value}
                 </Button>
               );
-            })} */}
+            })}
           </div>
         </div>
       </div>
       <div className="flex gap-2">
-        <Button pill onClick={handleAddToCart}>
+        <Button  color="primary" pill onClick={handleAddToCart}>
           Add to Cart
         </Button>
-        <Button pill>Wish List</Button>
+        <Button  color="primary" pill>Wish List</Button>
       </div>
     </div>
   );

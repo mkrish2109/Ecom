@@ -1,7 +1,7 @@
 import React from "react";
 import WishlistList from "../components/wishlist/WishlistList";
 
-function Wishlist() {
+function WishlistPage() {
   return (
     <div>
       <WishlistList />
@@ -9,4 +9,4 @@ function Wishlist() {
   );
 }
 
-export default Wishlist;
+export default WishlistPage;

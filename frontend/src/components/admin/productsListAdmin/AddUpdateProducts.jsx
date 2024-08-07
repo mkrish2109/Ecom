@@ -1,4 +1,4 @@
-import { Button, Checkbox } from "flowbite-react";
+import { Button, Checkbox, Label } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -118,17 +118,18 @@ function AddUpdateProducts() {
     if (isAdd) {
       const response = await addProduct(formData);
       if (response.success === true) {
+        navigate("/admin/products");
         toast.success(response.msg);
       }
     } else {
       const response = await updateProduct(formState._id, formData);
       if (response.success === true) {
+        navigate("/admin/products");
         toast.success(response.msg);
       }
     }
-
-    navigate("/admin/products");
   }
+  console.log("formState", formState);
 
   if (!formState) return null;
   if (!pages) return null;
@@ -146,11 +147,11 @@ function AddUpdateProducts() {
     };
   });
 
-  const categoryOptions = allCategoryOptions.find(
-    (v) => v.page === formState.gender
-  )?.options;
-  console.log("genderOptions", genderOptions);
-  console.log("allCategoryOptions", allCategoryOptions);
+  const categoryOptions =
+    allCategoryOptions.find((v) => v.page === formState.gender)?.options;
+  // console.log("genderOptions", genderOptions);
+  // console.log("formState", formState);
+  // console.log("allCategoryOptions", allCategoryOptions);
 
   return (
     <div>
@@ -226,7 +227,7 @@ function AddUpdateProducts() {
             />
           </div>
           <div className="flex items-center gap-2">
-            <label htmlFor="isTrending">Is Trending</label>
+            <Label htmlFor="isTrending">Is Trending</Label>
             <Checkbox
               id="isTrending"
               name="isTrending"
@@ -234,7 +235,7 @@ function AddUpdateProducts() {
               onChange={handleTrendingChange}
             />
           </div>
-          <Button type="submit">Submit</Button>
+          <Button  color="primary" type="submit">Submit</Button>
         </form>
       </div>
     </div>

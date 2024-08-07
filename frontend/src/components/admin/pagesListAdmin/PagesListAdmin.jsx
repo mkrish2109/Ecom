@@ -37,7 +37,7 @@ function PagesListAdmin() {
     <div>
       <div className="flex items-center justify-between">
         <AdminPageTitle title="Pages" />
-        <Button className="h-fit" onClick={goToAddUpdatePages}>
+        <Button  color="primary" className="h-fit" onClick={goToAddUpdatePages}>
           Add Page
         </Button>
       </div>

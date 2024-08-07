@@ -102,17 +102,21 @@ const updatePage = async (req, res) => {
       }
     }
 
+    const pathToUploadsFolder = path.join(__dirname, "../uploads");
+    const filesInUploadsFolder = await fs.readdir(pathToUploadsFolder);
+
     // Check if any carousel image is removed and remove them from uploads folder.
     for (const image of pageFromDB.carouselImages) {
       if (!body.carouselImages.includes(image)) {
-        await fs.unlink(
-          path.join(__dirname, "../uploads", path.parse(image).base)
-        );
+        if (filesInUploadsFolder.includes(path.parse(image).base)) {
+          await fs.unlink(
+            path.join(__dirname, "../uploads", path.parse(image).base)
+          );
+        }
       }
     }
 
     // Check if any category image is removed and remove them from uploads folder.
-
     const pagesCategoryImages = pageFromDB.categories.map((value) => {
       return { category: value.name, image: value.image };
     });
@@ -135,9 +139,11 @@ const updatePage = async (req, res) => {
       });
 
       if (!image) {
-        await fs.unlink(
-          path.join(__dirname, "../uploads", path.parse(value.image).base)
-        );
+        if (filesInUploadsFolder.includes(path.parse(value.image).base)) {
+          await fs.unlink(
+            path.join(__dirname, "../uploads", path.parse(value.image).base)
+          );
+        }
       }
     }
 

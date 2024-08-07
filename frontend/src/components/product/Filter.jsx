@@ -6,26 +6,6 @@ import { clothesColors } from "../../data/productList";
 function Filter() {
   return (
     <>
-      {/* Categories */}
-      <ProductFilter
-        title="Categories"
-        categories={["TShirt", "Lounge Tshirts"]}
-      />
-
-      {/* Band */}
-      <ProductFilter
-        title="BRAND"
-        categories={[
-          "UrbanThreads",
-          "CottonCanvas",
-          "InkSplash",
-          "ThreadCraft",
-          "DesignDrape",
-          "StitchStreet",
-          "FabricFusion",
-        ]}
-      />
-
       {/* Price */}
       <ProductFilter
         title="Price"

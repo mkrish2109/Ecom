@@ -8,14 +8,15 @@ import { getSinglePage, getTrendingProducts } from "../services/apiServices";
 function Home() {
   const params = useParams();
   const [page, setPage] = useState(null);
+
   const [trendingProducts, setTrendingProducts] = useState(null);
-  console.log("params", params);
+
   useEffect(() => {
-    getSinglePage(params.gender).then((data) => {
+    getSinglePage(params.gender || "home").then((data) => {
       setPage(data?.data);
-      console.log("page", page);
     });
   }, [params]);
+
   useEffect(() => {
     getTrendingProducts(params.gender).then((data) => {
       setTrendingProducts(data?.data);
@@ -23,11 +24,13 @@ function Home() {
   }, [params]);
 
   if (!page) return null;
-
+  console.log("categories", page.categories);
   return (
     <>
       <OfferCarousel images={page.carouselImages} />
-      <TrendingRow products={trendingProducts} />
+      {trendingProducts && trendingProducts.length ? (
+        <TrendingRow products={trendingProducts} />
+      ) : null}
       <CategoriesRow categories={page.categories} />
     </>
   );

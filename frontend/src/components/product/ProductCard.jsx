@@ -79,10 +79,12 @@ function ProductCard({ product }) {
             </span>
           </div>
           <div className="flex flex-col justify-between">
-            <span className="text-3xl font-bold text-gray-900 dark:text-white">
+            <span className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
               ${product.price}
             </span>
-            <Button onClick={handleAddToCart}>Add to cart</Button>
+            <Button color="primary" onClick={handleAddToCart} outline>
+              Add to cart
+            </Button>
           </div>
         </div>
       </Card>

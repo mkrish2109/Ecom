@@ -21,14 +21,16 @@ function ProductsListItem({ product, handleDelete }) {
       </div>
       <div className="grow-[1]">
         <h3 className="font-bold">{product.name}</h3>
-        <p>{product.desc}</p>
-        <p>{product.price}</p>
+        <p className="whitespace-nowrap overflow-hidden text-clip max-w-[200px]">
+          {product.desc}
+        </p>
+        <p>₹{product.price}</p>
       </div>
       <div className="flex gap-2">
-        <Button pill onClick={handleEdit}>
+        <Button  color="primary" pill onClick={handleEdit}>
           <HiPencil />
         </Button>
-        <Button
+        <Button  color="primary"
           pill
           onClick={() => {
             handleDelete(product._id);

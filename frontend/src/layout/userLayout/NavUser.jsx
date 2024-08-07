@@ -30,6 +30,7 @@ function NavUser() {
   const user = useSelector((store) => {
     return store.user.user;
   });
+  console.log("user", user);
 
   function handleCartToggle() {
     setCartIsOpen(!isCartOpen);
@@ -44,7 +45,6 @@ function NavUser() {
       toast.error(response.msg);
     }
   }
-  console.log("page", pages);
   return (
     <>
       <Navbar className="py-4 sm:px-8" fluid>

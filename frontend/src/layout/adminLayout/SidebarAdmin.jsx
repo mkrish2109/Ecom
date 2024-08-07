@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const links = [
   { id: 1, name: "Dashboard", link: "/admin/dashboard" },
+  { id: 4, name: "Page", link: "/admin/pages" },
   { id: 2, name: "Products", link: "/admin/products" },
   { id: 3, name: "Orders", link: "/admin/orders" },
   { id: 4, name: "Users", link: "/admin/users" },
-  { id: 4, name: "Page", link: "/admin/pages" },
   { id: 5, name: "Account", link: "/admin/account" },
   { id: 6, name: "Log Out" },
 ];
@@ -15,6 +15,7 @@ const links = [
 function SidebarAdmin() {
   return (
     <Sidebar
+      collapse="button"
       aria-label="Sidebar with multi-level dropdown example"
       className="w-50">
       <Sidebar.Items>

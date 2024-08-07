@@ -77,7 +77,7 @@ function AddUpdatePages() {
 
   function handleRemoveCategory(deleteId) {
     const updatedCategories = formState.categories.filter((value) => {
-      if ((isAdd ? value.id : value._id) === deleteId) {
+      if ((isAdd ? value.id : value._id || value.id) === deleteId) {
         return false;
       }
       return true;
@@ -88,7 +88,7 @@ function AddUpdatePages() {
 
   function handleChangeCategory(e, updateId) {
     const updatedCategories = formState.categories.map((value) => {
-      if ((isAdd ? value.id : value._id) === updateId) {
+      if ((isAdd ? value.id : value._id || value.id) === updateId) {
         return { ...value, [e.target.name]: e.target.value };
       }
       return value;
@@ -98,7 +98,7 @@ function AddUpdatePages() {
 
   function handleCategoryImageUpload(e, updateId) {
     const updatedCategories = formState.categories.map((value) => {
-      if ((isAdd ? value.id : value._id) === updateId) {
+      if ((isAdd ? value.id : value._id || value.id) === updateId) {
         return { ...value, [e.target.name]: e.target.files };
       }
       return value;
@@ -108,7 +108,7 @@ function AddUpdatePages() {
 
   function handleCategoryImageRemove(e, deleteId) {
     const updatedCategories = formState.categories.map((value) => {
-      if ((isAdd ? value.id : value._id) === deleteId) {
+      if ((isAdd ? value.id : value._id || value.id) === deleteId) {
         return { ...value, image: "" };
       }
       return value;
@@ -148,26 +148,26 @@ function AddUpdatePages() {
           formData.append("name", data.name);
         }
         if (key === "slug") {
+          console.log("slug", data.slug);
           formData.append("slug", data.slug);
         }
       }
     }
-
     // console.log("formData", Array.from(formData.entries()));
 
     if (isAdd) {
       const response = await addPage(formData);
       if (response.success === true) {
         toast.success(response.msg);
+        navigate("/admin/pages");
       }
     } else {
       const response = await updatePage(formState._id, formData);
       if (response.success === true) {
         toast.success(response.msg);
+        navigate("/admin/pages");
       }
     }
-
-    navigate("/admin/pages");
   }
 
   return (
@@ -188,7 +188,9 @@ function AddUpdatePages() {
             images={formState.carouselImages}
           />
           <div className="flex justify-end">
-            <Button onClick={handleAddCategory}>Add Category</Button>
+            <Button color="primary" onClick={handleAddCategory}>
+              Add Category
+            </Button>
           </div>
           {formState.categories.map((value) => {
             return (
@@ -202,7 +204,9 @@ function AddUpdatePages() {
             );
           })}
 
-          <Button type="submit">Submit</Button>
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
         </form>
       </div>
     </div>

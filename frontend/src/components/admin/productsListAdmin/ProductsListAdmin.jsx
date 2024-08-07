@@ -34,7 +34,7 @@ function ProductsListAdmin() {
     <div>
       <div className="flex items-center justify-between">
         <AdminPageTitle title="Products" />
-        <Button className="h-fit" onClick={goToAddUpdateProducts}>
+        <Button  color="primary" className="h-fit" onClick={goToAddUpdateProducts}>
           Add Product
         </Button>
       </div>

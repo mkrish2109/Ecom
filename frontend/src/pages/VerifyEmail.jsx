@@ -40,7 +40,11 @@ function VerifyEmail() {
           {verified ? "Verified" : "Verifying Email..."}
         </h2>
 
-        <Button className="w-fit" onClick={goToHome} disabled={!verified}>
+        <Button
+          color="primary"
+          className="w-fit"
+          onClick={goToHome}
+          disabled={!verified}>
           Go to Home
         </Button>
       </div>

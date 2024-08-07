@@ -24,10 +24,10 @@ function PagesListItem({ page, handleDelete }) {
           <h3 className="font-bold">{page.name}</h3>
         </div>
         <div className="flex gap-2">
-          <Button pill onClick={handleEdit}>
+          <Button  color="primary" pill onClick={handleEdit}>
             <HiPencil />
           </Button>
-          <Button
+          <Button  color="primary"
             pill
             onClick={() => {
               handleDelete(page._id);

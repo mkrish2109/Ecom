@@ -29,7 +29,7 @@ function ProfileForm() {
             </div>
             <TextInput id="confirmPassword" type="password" required />
           </div>
-          <Button type="submit">Submit</Button>
+          <Button  color="primary" type="submit">Submit</Button>
         </form>
       </Card>
     </div>

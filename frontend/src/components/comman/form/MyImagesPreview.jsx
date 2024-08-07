@@ -11,7 +11,7 @@ function MyImagesPreview({ images, remove }) {
             index={index}
             className="w-20 h-20 rounded-lg border border-slate-300 overflow-hidden relative">
             <img src={url} alt="" className="h-full w-full object-cover" />
-            <Button
+            <Button  color="primary"
               pill
               className="absolute top-[2px] right-[2px] h-[24px] w-[24px] flex items-center justify-center"
               onClick={() => {

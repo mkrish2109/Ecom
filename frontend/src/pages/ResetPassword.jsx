@@ -64,7 +64,7 @@ function ResetPassword() {
               required
             />
           </div>
-          <Button type="submit">Submit</Button>
+          <Button   color="primary" type="submit">Submit</Button>
         </form>
       </Card>
     </div>

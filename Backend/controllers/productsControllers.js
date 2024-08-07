@@ -14,23 +14,9 @@ const getAllProducts = async (req, res) => {
     if (category) {
       filter.category = category;
     }
+
     const products = await Product.find(filter);
     res.status(200).send({ success: true, data: products });
-  } catch (error) {
-    sendErrorResponse(res, error.message);
-  }
-};
-
-const getSingleProduct = async (req, res) => {
-  try {
-    const { slug } = req.params;
-    const page = await Page.findOne({ slug: slug });
-
-    if (!product) {
-      return sendErrorResponse(res, "No such product found.", 404);
-    }
-
-    res.status(200).json({ success: true, data: product });
   } catch (error) {
     sendErrorResponse(res, error.message);
   }
@@ -44,6 +30,22 @@ const getTrendingProducts = async (req, res) => {
       isTrending: true,
     }).limit(10);
     res.status(200).send({ success: true, data: products });
+  } catch (error) {
+    sendErrorResponse(res, error.message);
+  }
+};
+
+const getSingleProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const product = await Product.findById(id);
+
+    if (!product) {
+      return sendErrorResponse(res, "No such product found.", 404);
+    }
+
+    res.status(200).json({ success: true, data: product });
   } catch (error) {
     sendErrorResponse(res, error.message);
   }
@@ -70,11 +72,7 @@ const addProduct = async (req, res) => {
 
     const product = await Product.create({ ...body, images });
 
-    res.status(200).json({
-      success: true,
-      data: product,
-      msg: "Product added successfully!",
-    });
+    res.status(200).json({ success: true, data: product });
   } catch (error) {
     sendErrorResponse(res, error.message);
   }
@@ -85,6 +83,8 @@ const updateProduct = async (req, res) => {
     const { id } = req.params;
     const body = req.body;
     const files = req.files?.images;
+
+    console.log("body", body);
 
     if (!body.images) {
       body.images = [];
@@ -105,6 +105,10 @@ const updateProduct = async (req, res) => {
     }
 
     const product = await Product.findById(id);
+
+    const pathToUploadsFolder = path.join(__dirname, "../uploads");
+    const filesInUploadsFolder = await fs.readdir(pathToUploadsFolder);
+
     if (!product) {
       return sendErrorResponse(res, "No such product found.", 404);
     }
@@ -112,12 +116,15 @@ const updateProduct = async (req, res) => {
     if (product.images.length) {
       for (const img of product.images) {
         if (!body.images.includes(img)) {
-          const deletePath = path.join(
-            __dirname,
-            "../uploads",
-            path.basename(img)
-          );
-          await fs.unlink(deletePath);
+          const baseName = path.parse(img).base;
+          if (filesInUploadsFolder.includes(baseName)) {
+            const deletePath = path.join(
+              __dirname,
+              "../uploads",
+              path.basename(img)
+            );
+            await fs.unlink(deletePath);
+          }
         }
       }
     }
@@ -188,9 +195,9 @@ const deleteProduct = async (req, res) => {
 
 module.exports = {
   getAllProducts,
-  getTrendingProducts,
   getSingleProduct,
   addProduct,
   updateProduct,
   deleteProduct,
+  getTrendingProducts,
 };

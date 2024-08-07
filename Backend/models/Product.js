@@ -22,10 +22,10 @@ const productSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: [],
+
     required: true,
   },
-  gender: { type: String, enum: [], required: true },
+  gender: { type: String, required: true },
   stock: { type: Number, requried: true },
   sizes: {
     type: [String],
@@ -79,6 +79,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   isTrending: { type: Boolean, default: false },
+  userId: String,
 });
 
 const Product = mongoose.model("Product", productSchema);

@@ -5,7 +5,7 @@ function CategoryCard({ category }) {
   const navigate = useNavigate();
   const params = useParams();
   function goToList() {
-    navigate(`/${params.gender || "men"}//${category.name}`);
+    navigate(`/${params.gender || "men"}/${category.name}`);
   }
 
   return (

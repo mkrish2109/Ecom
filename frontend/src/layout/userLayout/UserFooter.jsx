@@ -36,7 +36,7 @@ function UserFooter() {
               </div>
               <div>
                 <Footer.Title title="Follow us" />
-                <Footer.LinkGroup col>
+                <Footer.LinkGroup col>kw
                   <Footer.Link href="#">Github</Footer.Link>
                   <Footer.Link href="#">Discord</Footer.Link>
                 </Footer.LinkGroup>
