@@ -9,6 +9,7 @@ const productsRouter = require("./routes/productsRouter");
 const fileupload = require("express-fileupload");
 const pagesRouter = require("./routes/pagesRouter");
 const whishListRouter = require("./routes/whishListRouter");
+const ordersRouter = require("./routes/ordersRouter");
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use("/users", userRouter);
 app.use("/products", productsRouter);
 app.use("/pages", pagesRouter);
 app.use("/whishList", whishListRouter);
+app.use("/orders", ordersRouter);
 
 start(app);

@@ -3,12 +3,28 @@ import React, { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { addWhishList, deleteWhishList } from "../../services/apiServices";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { IoMdCart } from "react-icons/io";
 
 function DetailsPage({ product }) {
   const dispatch = useDispatch();
   function handleAddToCart(e) {
     e.stopPropagation();
     dispatch(addToCart({ ...product, qty: 1 }));
+  }
+  const [whishListAdded, setWhishListAdded] = useState(false);
+
+  console.log("product", product);
+  async function handleWhishList() {
+    // Add to wishlist functionality
+    if (whishListAdded === true) {
+      await addWhishList(product._id);
+      setWhishListAdded(false);
+    } else {
+      await deleteWhishList(product._id);
+      setWhishListAdded(true);
+    }
   }
 
   return (
@@ -51,10 +67,16 @@ function DetailsPage({ product }) {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button  color="primary" pill onClick={handleAddToCart}>
-          Add to Cart
+        <Button onClick={handleWhishList} pill>
+          {whishListAdded ? (
+            <FaRegHeart fontSize="1.25rem" />
+          ) : (
+            <FaHeart fontSize="1.25rem" color="red" />
+          )}
         </Button>
-        <Button  color="primary" pill>Wish List</Button>
+        <Button pill onClick={handleAddToCart}>
+          <IoMdCart fontSize="1.25rem" />
+        </Button>
       </div>
     </div>
   );

@@ -26,6 +26,7 @@ import DashboardAdmin from "./components/admin/dashboardAdmin/DashboardAdmin";
 import PagesListAdmin from "./components/admin/pagesListAdmin/PagesListAdmin";
 import AddUpdatePages from "./components/admin/pagesListAdmin/AddUpdatePages";
 import { Flowbite } from "flowbite-react";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const customTheme = {
@@ -53,11 +54,12 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path=":gender" element={<Home />} />
+                <Route path="wishlist" element={<WishlistPage />} />
                 <Route path=":gender/:category" element={<Product />} />
                 <Route path="verify-email" element={<VerifyEmail />} />
                 <Route path="forgot-password" element={<ForgotPassword />} />
                 <Route path="reset-password" element={<ResetPassword />} />
-                <Route path="wishlist" element={<WishlistPage />} />
+                <Route path="checkout" element={<Checkout />} />
                 <Route
                   path=":gender/:categories/:id"
                   element={<ProductDetails />}

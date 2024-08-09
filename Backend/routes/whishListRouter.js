@@ -8,8 +8,8 @@ const {
 } = require("../controllers/whishListControllers");
 const whishListRouter = express.Router();
 
-whishListRouter.get("/", getAllWhishList);
-whishListRouter.post("/", addWhishList);
+whishListRouter.get("/", authMiddleware, getAllWhishList);
+whishListRouter.post("/:id", authMiddleware, addWhishList);
 whishListRouter.delete("/:id", authMiddleware, deleteWhishList);
 
 module.exports = whishListRouter;

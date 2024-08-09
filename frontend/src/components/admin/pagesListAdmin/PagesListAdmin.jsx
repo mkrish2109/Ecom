@@ -24,7 +24,7 @@ function PagesListAdmin() {
     const input = window.confirm("Are you sure you want to delete this?");
     if (input) {
       const response = await deletePage(id);
-      console.log(response.msg);
+
       if (response.success === true) {
         toast.success(response.msg);
       }
@@ -37,7 +37,7 @@ function PagesListAdmin() {
     <div>
       <div className="flex items-center justify-between">
         <AdminPageTitle title="Pages" />
-        <Button  color="primary" className="h-fit" onClick={goToAddUpdatePages}>
+        <Button color="primary" className="h-fit" onClick={goToAddUpdatePages}>
           Add Page
         </Button>
       </div>

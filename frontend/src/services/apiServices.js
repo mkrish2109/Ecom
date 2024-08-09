@@ -1,5 +1,11 @@
 import { baseURL, fetchHelper } from "../helpers/fetchHelper";
 
+
+// User
+export function getAllUsers() {
+  return fetchHelper(`${baseURL}/users`);
+}
+
 // Auth
 function register(data) {
   return fetchHelper(`${baseURL}/auth/register`, "POST", data);
@@ -102,6 +108,42 @@ async function updatePage(id, data) {
 
 function deletePage(id) {
   return fetchHelper(`${baseURL}/pages/${id}`, "DELETE");
+}
+
+//WhishList
+export function getAllWhishList() {
+  return fetchHelper(`${baseURL}/whishList`);
+}
+
+export function addWhishList(id, isAdded) {
+  return fetchHelper(`${baseURL}/whishList/${id}`, "POST", isAdded);
+}
+
+export function deleteWhishList(id) {
+  return fetchHelper(`${baseURL}/whishList/${id}`, "DELETE");
+}
+
+// Orders
+export function createOrder(data) {
+  return fetchHelper(`${baseURL}/orders`, "POST", data);
+}
+
+export function updateOrder(id, data) {
+  return fetchHelper(`${baseURL}/orders/${id}`, "PATCH", data);
+}
+
+export function updateOrderStatus(id, data) {
+  return fetchHelper(`${baseURL}/orders/updateStatus/${id}`, "PATCH", data);
+}
+
+
+
+export function getAllOrders() {
+  return fetchHelper(`${baseURL}/orders`);
+}
+
+export function getUserOrders() {
+  return fetchHelper(`${baseURL}/orders/showAllMyOrders`);
 }
 
 export {

@@ -4,13 +4,17 @@ const { sendErrorResponse } = require("../utils/serverUtils");
 
 const getAllWhishList = async (req, res) => {
   try {
-    const whishList = await WhishList.find(req.user.userId);
-    console.log("whishList", whishList);
-    const products = await Promise.all(
-      whishList.map((item) => Product.findById({ _id: item.productId }))
-    );
+    const whishList = await WhishList.find({ user: req.user.userId });
 
-    res.status(200).json({ success: true, data: products });
+    const productsData = [];
+
+    for (const productId of whishList) {
+      const product = await Product.findById(productId.productId);
+
+      productsData.push(product);
+    }
+
+    res.status(200).json({ success: true, data: productsData });
   } catch (error) {
     sendErrorResponse(res, error.message);
   }
@@ -18,21 +22,25 @@ const getAllWhishList = async (req, res) => {
 
 const addWhishList = async (req, res) => {
   try {
-    const { productId, isAdded } = req.body;
-    console.log(req.user.userId);
+    const { id } = req.params;
     const result = await WhishList.create({
       user: req.user.userId,
-      productId,
-      isAdded,
+      productId: id,
+      isAdded: true,
     });
-    res.status(200).json({ success: true, data: result });
+    res
+      .status(200)
+      .json({ success: true, data: result, msg: "product Added in Whishlist" });
   } catch (error) {
     sendErrorResponse(res, error.message);
   }
 };
 const deleteWhishList = async (req, res) => {
   try {
-    const result = await WhishList.findByIdAndDelete(req.params.id);
+    const { id } = req.params;
+    const result = await WhishList.findOneAndDelete({ productId: id });
+    console.log(result);
+
     res.status(200).json({ success: true, data: result });
   } catch (error) {
     sendErrorResponse(res, error.message);
