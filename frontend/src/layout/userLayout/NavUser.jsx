@@ -30,7 +30,7 @@ function NavUser() {
   const user = useSelector((store) => {
     return store.user.user;
   });
-  console.log("user", user);
+
 
   function handleCartToggle() {
     setCartIsOpen(!isCartOpen);

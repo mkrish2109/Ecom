@@ -10,13 +10,12 @@ import { useParams } from "react-router-dom";
 function Product() {
   const [products, setProducts] = useState(null);
   const { gender, category } = useParams();
-  console.log("category", category);
+ 
   useEffect(() => {
     getAllProducts({ gender, category }).then((data) => {
       setProducts(data.data);
     });
   }, []);
-  console.log(products);
   if (!products) return null;
   return (
     <div>

@@ -40,7 +40,7 @@ function OrdersListAdmin() {
           actions={[
             {
               renderAction: function (id, value, setOrders) {
-                console.log("value", value);
+            
                 return (
                   <Select
                     value={value.status}

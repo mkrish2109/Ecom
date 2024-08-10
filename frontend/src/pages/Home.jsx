@@ -24,7 +24,7 @@ function Home() {
   }, [params]);
 
   if (!page) return null;
-  console.log("categories", page.categories);
+
   return (
     <>
       <OfferCarousel images={page.carouselImages} />

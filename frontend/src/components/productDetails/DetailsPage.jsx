@@ -15,7 +15,7 @@ function DetailsPage({ product }) {
   }
   const [whishListAdded, setWhishListAdded] = useState(false);
 
-  console.log("product", product);
+ 
   async function handleWhishList() {
     // Add to wishlist functionality
     if (whishListAdded === true) {

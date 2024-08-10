@@ -123,7 +123,7 @@ function AddUpdatePages() {
 
     const formData = new FormData();
 
-    console.log("data", data);
+
 
     for (const key in data) {
       if (key === "carouselImages") {
@@ -148,12 +148,12 @@ function AddUpdatePages() {
           formData.append("name", data.name);
         }
         if (key === "slug") {
-          console.log("slug", data.slug);
+        
           formData.append("slug", data.slug);
         }
       }
     }
-    // console.log("formData", Array.from(formData.entries()));
+   
 
     if (isAdd) {
       const response = await addPage(formData);

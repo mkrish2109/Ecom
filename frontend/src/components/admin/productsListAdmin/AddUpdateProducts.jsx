@@ -75,7 +75,7 @@ function AddUpdateProducts() {
   }
 
   function handleUpload(e) {
-    console.log(Array.from(e.target.files));
+
     setFormState({
       ...formState,
       images: [...formState.images, ...Array.from(e.target.files)],
@@ -129,7 +129,7 @@ function AddUpdateProducts() {
       }
     }
   }
-  console.log("formState", formState);
+
 
   if (!formState) return null;
   if (!pages) return null;
@@ -149,9 +149,7 @@ function AddUpdateProducts() {
 
   const categoryOptions =
     allCategoryOptions.find((v) => v.page === formState.gender)?.options;
-  // console.log("genderOptions", genderOptions);
-  // console.log("formState", formState);
-  // console.log("allCategoryOptions", allCategoryOptions);
+ 
 
   return (
     <div>

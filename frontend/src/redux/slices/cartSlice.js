@@ -33,7 +33,7 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      console.log("product", action.payload);
+ 
       const foundProduct = state.cart.find((value) => {
         if (value._id === action.payload._id) {
           return true;

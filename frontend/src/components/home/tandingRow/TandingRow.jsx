@@ -15,7 +15,7 @@ const settings = {
 
 function TrendingRow({ products }) {
   if (!products) return null;
-  console.log("products", products);
+ 
   return (
     <div className="w-full p-8">
       <RowTitle title="Trending" />

@@ -1,7 +1,7 @@
 import React from "react";
 
 function ProductImage({ images }) {
-  console.log("images", images);
+
   return (
     <div className="grid grid-cols-2 gap-4 ">
       {images.map((image, index) => {

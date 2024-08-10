@@ -15,7 +15,7 @@ function Login() {
   const user = useSelector((store) => {
     return store.user.user;
   });
-  console.log("user", user);
+ 
 
   useEffect(() => {
     if (user) {
