@@ -1,15 +1,23 @@
 import { Sidebar } from "flowbite-react";
 import React from "react";
+import { HiChartPie, HiPaperClip, HiShoppingBag, HiUser } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { MdOutlineBorderColor } from "react-icons/md";
+import { FaUsersCog } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
 
 const links = [
-  { id: 1, name: "Dashboard", link: "/admin/dashboard" },
-  { id: 4, name: "Page", link: "/admin/pages" },
-  { id: 2, name: "Products", link: "/admin/products" },
-  { id: 3, name: "Orders", link: "/admin/orders" },
-  { id: 4, name: "Users", link: "/admin/users" },
-  { id: 5, name: "Account", link: "/admin/account" },
-  { id: 6, name: "Log Out" },
+  { name: "Dashboard", link: "/admin/dashboard", icon: <HiChartPie /> },
+  { name: "Page", link: "/admin/pages", icon: <HiPaperClip /> },
+  { name: "Products", link: "/admin/products", icon: <HiShoppingBag /> },
+  {
+    name: "Orders",
+    link: "/admin/orders",
+    icon: <MdOutlineBorderColor />,
+  },
+  { name: "Users", link: "/admin/users", icon: <FaUsersCog /> },
+  { name: "Account", link: "/admin/account", icon: <HiUser /> },
+  { name: "Log Out", icon: <IoLogOut /> },
 ];
 
 function SidebarAdmin() {
@@ -24,12 +32,12 @@ function SidebarAdmin() {
             return (
               <div key={index} className="flex flex-col ">
                 <Link to={value.link}>
-                  <Sidebar.Item>
+                  <Sidebar.Item base>
                     <div className="flex items-center gap-2">
-                      <div className="[&>svg]:text-xl [&>svg]:text-gray-500">
+                      <div className="[&>svg]:text-xl [[&>svg]:text-gray-900">
                         {value.icon}
                       </div>
-                      <div className="text-gray-500">{value.name}</div>
+                      {value.name}
                     </div>
                   </Sidebar.Item>
                 </Link>

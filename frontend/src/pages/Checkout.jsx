@@ -5,9 +5,7 @@ import CartSection from "../components/checkout/CartSection";
 import CheckoutForm from "../components/checkout/CheckoutForm";
 import PaymentSection from "../components/checkout/PaymentSection";
 
-const stripePromise = loadStripe(
-  "pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3"
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 function Checkout() {
   const [order, setOrder] = useState(null);

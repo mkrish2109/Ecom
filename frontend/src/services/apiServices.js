@@ -1,6 +1,5 @@
 import { baseURL, fetchHelper } from "../helpers/fetchHelper";
 
-
 // User
 export function getAllUsers() {
   return fetchHelper(`${baseURL}/users`);
@@ -115,8 +114,8 @@ export function getAllWhishList() {
   return fetchHelper(`${baseURL}/whishList`);
 }
 
-export function addWhishList(id, isAdded) {
-  return fetchHelper(`${baseURL}/whishList/${id}`, "POST", isAdded);
+export function addWhishList(id) {
+  return fetchHelper(`${baseURL}/whishList/${id}`, "POST");
 }
 
 export function deleteWhishList(id) {
@@ -135,8 +134,6 @@ export function updateOrder(id, data) {
 export function updateOrderStatus(id, data) {
   return fetchHelper(`${baseURL}/orders/updateStatus/${id}`, "PATCH", data);
 }
-
-
 
 export function getAllOrders() {
   return fetchHelper(`${baseURL}/orders`);

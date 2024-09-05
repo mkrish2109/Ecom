@@ -15,11 +15,10 @@ function DetailsPage({ product }) {
   }
   const [whishListAdded, setWhishListAdded] = useState(false);
 
- 
   async function handleWhishList() {
     // Add to wishlist functionality
     if (whishListAdded === true) {
-      await addWhishList(product._id);
+      const response = await addWhishList(product._id);
       setWhishListAdded(false);
     } else {
       await deleteWhishList(product._id);

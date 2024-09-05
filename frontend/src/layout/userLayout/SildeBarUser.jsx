@@ -13,19 +13,19 @@ function SildeBarUser() {
   return (
     <Sidebar
       aria-label="Sidebar with multi-level dropdown example"
-      className="w-50">
+      className="w-50  ">
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           {links.map((value, index) => {
             return (
               <div className="flex flex-col " key={index}>
                 <Link to={value.url}>
-                  <Sidebar.Item>
+                  <Sidebar.Item base>
                     <div className="flex items-center gap-2">
-                      <div className="[&>svg]:text-xl [&>svg]:text-gray-500">
+                      <div className="[&>svg]:text-xl [[&>svg]:text-gray-900">
                         {value.icon}
                       </div>
-                      <div className="text-gray-500">{value.name}</div>
+                      {value.name}
                     </div>
                   </Sidebar.Item>
                 </Link>

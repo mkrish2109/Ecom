@@ -32,13 +32,12 @@ function App() {
   const customTheme = {
     button: {
       color: {
-        primary: "bg-[#2098e3] hover:bg-[#2a81b8] text-black",
+        primary: "bg-[#2098e3] hover:bg-[#1f90bc] text-white ",
       },
     },
     sidebar: {
-      collapse: {
-        button:
-          "group flex w-full items-center rounded-lg p-2 text-base font-normal text-red-900 transition duration-75 hover:bg-red-100 dark:text-white dark:hover:bg-white-700",
+      item: {
+        base: "h-full flex items-center justify-center rounded-md p-2 hover:bg-[#2098e3] hover:text-black-900 hover:text-white",
       },
     },
   };

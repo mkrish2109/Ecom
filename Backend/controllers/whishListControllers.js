@@ -23,6 +23,7 @@ const getAllWhishList = async (req, res) => {
 const addWhishList = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("id", id);
     const result = await WhishList.create({
       user: req.user.userId,
       productId: id,
@@ -39,7 +40,6 @@ const deleteWhishList = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await WhishList.findOneAndDelete({ productId: id });
- 
 
     res.status(200).json({ success: true, data: result });
   } catch (error) {
