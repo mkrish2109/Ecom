@@ -23,7 +23,7 @@ const getAllWhishList = async (req, res) => {
 const addWhishList = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("id", id);
+  
     const result = await WhishList.create({
       user: req.user.userId,
       productId: id,

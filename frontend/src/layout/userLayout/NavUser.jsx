@@ -28,9 +28,8 @@ function NavUser() {
   }, []);
 
   const user = useSelector((store) => {
-    return store.user.user;
+    return store?.user.user;
   });
-
 
   function handleCartToggle() {
     setCartIsOpen(!isCartOpen);
@@ -116,7 +115,9 @@ function NavUser() {
           {pages.map((link, index) => {
             return (
               <Link className="text-base" key={link.id} to={link.slug}>
-                <Navbar.Link href="#">{link.name}</Navbar.Link>
+                <a>
+                  <a>{link.name}</a>
+                </a>
               </Link>
             );
           })}
