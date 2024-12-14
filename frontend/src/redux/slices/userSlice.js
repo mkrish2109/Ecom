@@ -15,13 +15,24 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
+const getUserFromLocalStorage = () => {
+  try {
+    const user = localStorage.getItem("user");
+    return user ? JSON.parse(user) : null;
+  } catch (error) {
+    console.error("Error parsing user from localStorage:", error);
+    return null;
+  }
+};
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
     loading: false,
-    user: JSON.parse(localStorage.getItem("user")),
+    user: getUserFromLocalStorage(),
     error: "",
   },
+
   reducers: {
     // clearUser: (state, action) => {
     //   state.user = null;
