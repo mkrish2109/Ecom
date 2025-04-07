@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "66b9a57df2ede09f3431fc49"
+  },
+  "tax": 38.52,
+  "deliveryCharges": 12,
+  "subtotal": 321,
+  "total": 371.52,
+  "orderItems": [
+    {
+      "name": "Lux Cozi Men's Regular Fit Polo Neck Half Sleeve Solid Casual T-Shirt | Polo T-Shirt for Men",
+      "image": "http://localhost:5000/uploads/1723039555336-Red Yellow and Green Paper Bag and Cart Store Logo (1).png",
+      "price": 321,
+      "qty": 1,
+      "product": {
+        "$oid": "66b37f43584d08f4f426a5c3"
+      },
+      "_id": {
+        "$oid": "66b9a57df2ede09f3431fc4a"
+      }
+    }
+  ],
+  "status": "delivered",
+  "user": {
+    "$oid": "6687dad6c6929112bb7049e9"
+  },
+  "clientSecret": "pi_3PmrL2CDTikEp7zR0Mt7QFSB_secret_PwXUcvOd1oU3IRCKiW3glQxy1",
+  "createdAt": {
+    "$date": "2024-08-12T06:02:37.328Z"
+  },
+  "updatedAt": {
+    "$date": "2024-08-12T06:06:15.971Z"
+  },
+  "__v": 0,
+  "paymentIntentId": "pi_3PmrL2CDTikEp7zR0Mt7QFSB"
+}]

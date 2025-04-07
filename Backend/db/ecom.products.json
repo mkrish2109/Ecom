@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "66b1bf508740275bfd12902f"
+  },
+  "name": "Lux Cozi Men's Regular Fit Polo Neck Half Sleeve Solid Casual T-Shirt | Polo T-Shirt for Men",
+  "desc": "Lux Cozi Men's Regular Fit Polo Neck Half Sleeve Solid Casual T-Shirt | Polo T-Shirt for Men",
+  "price": 359,
+  "taxRate": 10,
+  "deliveryCharges": 10,
+  "rating": 0,
+  "images": [
+    "http://localhost:5000/uploads/1722942556443-71hLYEi5SoL._SY741_.jpg"
+  ],
+  "category": "t-shirts",
+  "gender": "men",
+  "stock": 100,
+  "sizes": [
+    "xs",
+    "s",
+    "m",
+    "l",
+    "xl",
+    "xxl",
+    "xxxl"
+  ],
+  "colors": [
+    "green"
+  ],
+  "isTrending": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66b37f43584d08f4f426a5c3"
+  },
+  "name": "Lux Cozi Men's Regular Fit Polo Neck Half Sleeve Solid Casual T-Shirt | Polo T-Shirt for Men",
+  "desc": "Lux Cozi Men's Regular Fit Polo Neck Half Sleeve Solid Casual T-Shirt | Polo T-Shirt for Men",
+  "price": 321,
+  "taxRate": 12,
+  "deliveryCharges": 12,
+  "rating": 0,
+  "images": [
+    "http://localhost:5000/uploads/1723039555336-Red Yellow and Green Paper Bag and Cart Store Logo (1).png"
+  ],
+  "category": "shirts",
+  "gender": "men",
+  "stock": 100,
+  "sizes": [
+    "xs"
+  ],
+  "colors": [
+    "yellow"
+  ],
+  "isTrending": true,
+  "__v": 0
+}]

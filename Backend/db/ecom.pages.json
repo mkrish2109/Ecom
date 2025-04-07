@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "66b1ba876534fab241d121bb"
+  },
+  "name": "Home",
+  "slug": "home",
+  "carouselImages": [
+    "http://localhost:5000/uploads/1722923655183-shanna-camilleri-ljNQxfyN7AM-unsplash.jpg",
+    "http://localhost:5000/uploads/1722923655186-no-revisions-kWVImL5QxJI-unsplash.jpg",
+    "http://localhost:5000/uploads/1722923655226-waldemar-NPPNHZK1U0s-unsplash.jpg"
+  ],
+  "categories": [
+    {
+      "name": "shirts",
+      "displayName": "Shirts",
+      "image": "http://localhost:5000/uploads/1722924582071-Shirts.webp",
+      "_id": {
+        "$oid": "66b1ba876534fab241d121bc"
+      }
+    }
+  ],
+  "isTrending": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66b1bf0a8740275bfd129022"
+  },
+  "name": "Men",
+  "slug": "men",
+  "carouselImages": [
+    "http://localhost:5000/uploads/1722924810821-men-cal-3.webp",
+    "http://localhost:5000/uploads/1722924810830-men-cal-2.webp",
+    "http://localhost:5000/uploads/1722924810833-men-cal-1.webp"
+  ],
+  "categories": [
+    {
+      "name": "t-shirts",
+      "displayName": "T-shirts",
+      "image": "http://localhost:5000/uploads/1722924810837-T-shirt.webp",
+      "_id": {
+        "$oid": "66b1bf0a8740275bfd129023"
+      }
+    },
+    {
+      "name": "shirts",
+      "displayName": "Shirts",
+      "image": "http://localhost:5000/uploads/1722924810840-Shirts.webp",
+      "_id": {
+        "$oid": "66b1bf0a8740275bfd129024"
+      }
+    }
+  ],
+  "isTrending": false,
+  "__v": 0
+}]
