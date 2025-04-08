@@ -3,7 +3,7 @@ const { ObjectId } = require('mongodb'); // Import ObjectId
 const fs = require('fs');
 const path = require('path'); 
 async function importData() {
-  const uri = "mongodb+srv://mkrish2109:icu1iO7nMIlWEliM@cluster0.spdd73s.mongodb.net/ecomt?retryWrites=true&w=majority&appName=Cluster0";
+  const uri = "process.env.MONGO_URI";
   const client = new MongoClient(uri);
   
   try {
