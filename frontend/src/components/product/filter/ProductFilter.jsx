@@ -9,7 +9,7 @@ function ProductFilter({ title, categories }) {
         return (
           <div className="flex gap-2 items-center" key={i}>
             <Checkbox />
-            <p>{value}</p>
+            <span>{value}</span>
           </div>
         );
       })}

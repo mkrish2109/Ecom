@@ -9,7 +9,7 @@ function ColorFilter({ color, colorName }) {
           backgroundColor: color,
         }}
       />
-      <p>{colorName}</p>
+       <span>{colorName}</span>
     </div>
   );
 }

@@ -47,16 +47,10 @@ function NavUser() {
   return (
     <>
       <Navbar className="py-4 sm:px-8" fluid>
-        <Navbar.Brand className="items-center justify-center">
-          <Link to="/" className="flex items-center">
-            <img
-              src="/image/logo.png"
-              className="mr-2 h-10 w-10 sm:h-9  "
-              alt="logo"
-            />
+          <Navbar.Brand className="items-center justify-center" as={Link} to="/">
+            <img src="/image/logo.png" className="mr-2 h-10 w-10 sm:h-9" alt="logo" />
             <h2 className="font-bold text-[#2098e3] text-xl">{COMPANY_NAME}</h2>
-          </Link>
-        </Navbar.Brand>
+          </Navbar.Brand>
         <div className="flex md:order-2 gap-8 items-center">
           <Dropdown
             arrowIcon={false}
@@ -115,9 +109,7 @@ function NavUser() {
           {pages.map((link, index) => {
             return (
               <Link className="text-base" key={link.id} to={link.slug}>
-                <a>
-                  <a>{link.name}</a>
-                </a>
+                  {link.name}
               </Link>
             );
           })}

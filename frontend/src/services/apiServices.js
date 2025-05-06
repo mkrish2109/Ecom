@@ -143,6 +143,27 @@ export function getUserOrders() {
   return fetchHelper(`${baseURL}/orders/showAllMyOrders`);
 }
 
+// Cart
+// Cart
+export function getUserCart() {
+  console.log("Getting user cart");
+  return fetchHelper(`${baseURL}/cart`);
+}
+
+export function addToCartAPI(data) {
+  return fetchHelper(`${baseURL}/cart`, "POST", data);
+}
+
+export function updateCartQty(productId, quantity) {
+  return fetchHelper(`${baseURL}/cart/${productId}`, "PATCH", { quantity });
+}
+
+export function removeFromCartAPI(productId) {
+  console.log("Removing from cart", productId);
+  return fetchHelper(`${baseURL}/cart/item/${productId}`, "DELETE" );
+}
+
+
 export {
   register,
   verifyEmail,
@@ -160,5 +181,5 @@ export {
   addPage,
   updatePage,
   deletePage,
-  getTrendingProducts,
+  getTrendingProducts
 };

@@ -1,17 +1,29 @@
 import { Button, Select } from "flowbite-react";
 import React, { useState } from "react";
 import { HiStar } from "react-icons/hi";
-import { addToCart } from "../../redux/slices/cartSlice";
+import { addToCart, addToCartAsync } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { addWhishList, deleteWhishList } from "../../services/apiServices";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
+import { toast } from "react-toastify";
 
 function DetailsPage({ product }) {
   const dispatch = useDispatch();
   function handleAddToCart(e) {
     e.stopPropagation();
-    dispatch(addToCart({ ...product, qty: 1 }));
+    // dispatch(addToCart({ ...product, qty: 1 }));
+    // console.log("product", product);
+    dispatch(addToCartAsync({  product, quantity: 1 }));
+    if (product.stock === 0) {
+      alert("Product is out of stock");
+    }
+    if (product.stock < 1) {
+      alert("Product is out of stock");
+    }
+    if (product.stock > 0) {
+      // toast.success("Product added to cart");
+    }
   }
   const [whishListAdded, setWhishListAdded] = useState(false);
 

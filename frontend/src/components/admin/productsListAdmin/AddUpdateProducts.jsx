@@ -137,7 +137,7 @@ function AddUpdateProducts() {
   const genderOptions = pages.map((v) => {
     return { value: v.slug, text: v.name };
   });
-
+console.log(pages)
   const allCategoryOptions = pages.map((v) => {
     return {
       page: v.slug,
