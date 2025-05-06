@@ -6,7 +6,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import WishlistPage from "./pages/WishlistPage";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./redux/store";
 import VerifyEmail from "./pages/VerifyEmail";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -27,6 +27,8 @@ import PagesListAdmin from "./components/admin/pagesListAdmin/PagesListAdmin";
 import AddUpdatePages from "./components/admin/pagesListAdmin/AddUpdatePages";
 import { Flowbite } from "flowbite-react";
 import Checkout from "./pages/Checkout";
+import { fetchCart } from "./redux/slices/cartSlice";
+import { useEffect } from "react";
 
 function App() {
   const customTheme = {
@@ -42,6 +44,12 @@ function App() {
     },
   };
 
+  // const dispatch = useDispatch();
+  
+  // useEffect(() => {
+  //   dispatch(fetchCart());
+  // }, [dispatch]);
+  
   return (
     <>
       <Flowbite theme={{ theme: customTheme }}>

@@ -2,7 +2,7 @@ import { Button, Card } from "flowbite-react";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { addToCart } from "../../redux/slices/cartSlice";
+import { addToCart, addToCartAsync } from "../../redux/slices/cartSlice";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -15,7 +15,8 @@ function ProductCard({ product }) {
 
   function handleAddToCart(e) {
     e.stopPropagation();
-    dispatch(addToCart({ ...product, qty: 1 }));
+    // dispatch(addToCart({ ...product, qty: 1 }));
+    dispatch(addToCartAsync({ product, quantity: 1 }));
   }
 
   return (

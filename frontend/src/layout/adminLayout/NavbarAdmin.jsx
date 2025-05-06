@@ -35,15 +35,13 @@ function NavbarAdmin() {
   return (
     <Navbar fluid className="border-b">
       <div className="flex items-center gap-8">
-        <Navbar.Brand className="flex items-center gap-2">
-          <Link to="/" className="flex items-center">
+        <Navbar.Brand as={Link} to="/" className="flex items-center gap-2">
             <img
               src="/image/logo.png"
               className="mr-2 h-10 w-10 sm:h-9  "
               alt="logo"
             />
             <h2 className="font-bold text-[#2098e3] text-xl">{COMPANY_NAME}</h2>
-          </Link>
         </Navbar.Brand>
       </div>
       <div className="flex md:order-2">

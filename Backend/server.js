@@ -10,7 +10,10 @@ const fileupload = require("express-fileupload");
 const pagesRouter = require("./routes/pagesRouter");
 const whishListRouter = require("./routes/whishListRouter");
 const ordersRouter = require("./routes/ordersRouter");
+const cartRouter = require("./routes/cartRoutes");
 // const dataImport = require("./db/import");
+
+
 const app = express();
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
@@ -25,5 +28,7 @@ app.use("/products", productsRouter);
 app.use("/pages", pagesRouter);
 app.use("/whishList", whishListRouter);
 app.use("/orders", ordersRouter);
+app.use("/cart", cartRouter);
+
 
 start(app);

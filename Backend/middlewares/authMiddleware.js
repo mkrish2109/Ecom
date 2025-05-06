@@ -12,6 +12,10 @@ const authMiddleware = async (req, res, next) => {
     const tokenUser = verifyJWT(accessToken);
 
     req.user = tokenUser;
+    if (!req.user) {
+      return sendErrorResponse(res, "Invalid token.", 401);
+    }
+    
     next();
   } catch (error) {
     sendErrorResponse(res, "Authentication failed.", 401);

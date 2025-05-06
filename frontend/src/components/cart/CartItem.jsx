@@ -6,21 +6,32 @@ import {
   decreaseQty,
   increaseQty,
   removeFromCart,
+  removeFromCartAsync,
+  updateCartItemAsync,
 } from "../../redux/slices/cartSlice";
+import {  getUserCart } from "../../services/apiServices";
 
 function CartItem({ cartItem }) {
   const dispatch = useDispatch();
+  
 
   function handleRemove() {
-    dispatch(removeFromCart(cartItem._id));
+    // dispatch(removeFromCart(cartItem._id));
+    dispatch(removeFromCartAsync(cartItem._id));
   }
 
   function handleIncreaseQty() {
-    dispatch(increaseQty(cartItem._id));
+    // dispatch(increaseQty(cartItem._id));
+    console.log("cartItem", cartItem._id);
+    dispatch(updateCartItemAsync({ productId: cartItem._id, qty: cartItem.qty + 1 }));
+
   }
 
   function handleDecreaseQty() {
-    dispatch(decreaseQty(cartItem._id));
+    // dispatch(decreaseQty(cartItem._id));
+    console.log("cartItem", cartItem);
+    dispatch(updateCartItemAsync({ productId: cartItem._id, qty: cartItem.qty - 1 }));
+
   }
 
   const { subTotal } = useSelector((store) => {
